@@ -84,7 +84,7 @@ describe('MDashboard', () => {
     usePluginStore.setState({ plugins: [], loaded: true });
     useAuthStore.setState({
       isAuthenticated: true,
-      user: { id: 1, username: 'Maurice', email: 'maurice@roamly.app', role: 'user', avatar_url: '' } as never,
+      user: { id: 1, username: 'Ronak', email: 'ronak@roamly.app', role: 'user', avatar_url: '' } as never,
     });
     useInAppNotificationStore.setState({ unreadCount: 0, fetchUnreadCount: async () => {} });
   });
@@ -193,7 +193,7 @@ describe('MDashboard', () => {
     render(<MDashboard />);
     const avatar = screen.getByRole('button', { name: 'nav.profile' });
 
-    expect(avatar).toHaveTextContent('M');
+    expect(avatar).toHaveTextContent('R');
     expect(avatar).toHaveAttribute('aria-expanded', 'false');
 
     fireEvent.click(avatar);
@@ -203,7 +203,7 @@ describe('MDashboard', () => {
   it('FE-MOB-DASH-011: a stored avatar replaces the initial', () => {
     useAuthStore.setState({
       isAuthenticated: true,
-      user: { id: 1, username: 'Maurice', email: 'm@roamly.app', role: 'user', avatar_url: '/uploads/avatars/m.jpg' } as never,
+      user: { id: 1, username: 'Ronak', email: 'm@roamly.app', role: 'user', avatar_url: '/uploads/avatars/m.jpg' } as never,
     });
     render(<MDashboard />);
 
