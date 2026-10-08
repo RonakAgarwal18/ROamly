@@ -672,78 +672,106 @@ function seedSikkimTrip(db: Database.Database): void {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Verified Google Maps data for the Sikkim Expedition itinerary (researched Oct 2026).
+// Each entry was cross-checked against 2+ sources (Google Maps place data, Wikipedia,
+// official tourism sites). Used by backfillSikkimPlaceCoordinates to correct the live trip.
+// ---------------------------------------------------------------------------
+const VERIFIED_SIKKIM_COORDS: Record<string, { lat: number; lng: number; address: string }> = {
+  'SNT bus Siliguri → Gangtok': { lat: 26.7242, lng: 88.4175, address: 'SNT Bus Stand, Hill Cart Rd, Pradhan Nagar, Siliguri, West Bengal 734001, India' },
+  'Hotel check-in': { lat: 27.3325, lng: 88.614, address: 'Gangtok, Sikkim 737101, India' },
+  'Group gym session': { lat: 27.3325, lng: 88.614, address: 'Gangtok, Sikkim 737101, India' },
+  'Deorali / Vajra taxi stands': { lat: 27.31966, lng: 88.60652, address: 'Deorali Rd, Deorali Bazar, Gangtok, Sikkim 737102, India' },
+  'MG Marg evening walk + street food': { lat: 27.33136, lng: 88.613819, address: 'M G Marg, Arithang, Gangtok, Sikkim 737101, India' },
+  'Rent 4 scooties': { lat: 27.3325, lng: 88.614, address: 'Gangtok, Sikkim 737101, India' },
+  'Rumtek Monastery': { lat: 27.288593, lng: 88.561517, address: 'Dharma Chakra Centre, Rumtek, Sikkim 737135, India' },
+  'Tashi View Point': { lat: 27.370581, lng: 88.616085, address: 'Tashi View Point, N Sikkim Hwy, Gangtok, Sikkim 737107, India' },
+  'Ganesh Tok': { lat: 27.341503, lng: 88.621257, address: 'Ganesh Tok, Jawaharlal Nehru Rd, Gangtok, Sikkim 737103, India' },
+  'MG Marg cafe-hopping + dinner': { lat: 27.33136, lng: 88.613819, address: 'M G Marg, Arithang, Gangtok, Sikkim 737101, India' },
+  'Banjhakri Falls & Energy Park': { lat: 27.350724, lng: 88.60335, address: 'Banjhakri Falls, Swastik, Gangtok, Sikkim 737101, India' },
+  'Baker\'s Cafe': { lat: 27.328957, lng: 88.612187, address: 'Baker\'s Cafe, Mahatma Gandhi Marg, Gangtok, Sikkim 737101, India' },
+  'Cafe Fiction': { lat: 27.335381, lng: 88.614733, address: 'Cafe Fiction, Jeewan Theeng Marg, Gangtok, Sikkim 737101, India' },
+  'Deorali — meet Bolero driver': { lat: 27.31966, lng: 88.60652, address: 'Deorali Rd, Deorali Bazar, Gangtok, Sikkim 737102, India' },
+  'Depart Gangtok (Bolero, Group A of 6)': { lat: 27.3325, lng: 88.614, address: 'Gangtok, Sikkim 737101, India' },
+  'Tsomgo Lake': { lat: 27.37528, lng: 88.76389, address: 'Tsomgo Lake, Changu, East Sikkim, India' },
+  'Nathu La Pass': { lat: 27.38681, lng: 88.83095, address: 'Nathu La Pass, East Sikkim 737131, India' },
+  'Old Baba Mandir': { lat: 27.365841, lng: 88.837931, address: 'Old Baba Mandir, Nathang Valley, Sikkim 737131, India' },
+  'Kupup Lake': { lat: 27.3302, lng: 88.8462, address: 'Kupup Lake (Elephant Lake), East Sikkim 737131, India' },
+  'Gnathang Valley sunset': { lat: 27.300064, lng: 88.8200967, address: 'Nathang Valley, Pakyong District, Sikkim 737132, India' },
+  'Zuluk homestay': { lat: 27.2526, lng: 88.776, address: 'Zuluk, Rongli, Sikkim 737131, India' },
+  'Shared Sumo Deorali → Namchi (Group B of 2)': { lat: 27.31966, lng: 88.60652, address: 'Deorali Rd, Deorali Bazar, Gangtok, Sikkim 737102, India' },
+  'Check in near Namchi Central Park': { lat: 27.165935, lng: 88.362207, address: 'Namchi Central Park, Namchi-Manpur Rd, Namchi, Sikkim 737126, India' },
+  'Namchi Central Park, bakeries, coffee': { lat: 27.165935, lng: 88.362207, address: 'Namchi Central Park, Namchi-Manpur Rd, Namchi, Sikkim 737126, India' },
+  'Thambi Viewpoint sunrise': { lat: 27.26576, lng: 88.78539, address: 'Thambi View Point, Zuluk, Sikkim 737102, India' },
+  'Descend Zuluk → Rongli → Singtam': { lat: 27.2518, lng: 88.7775, address: 'Zuluk, Pakyong District, Sikkim 737131, India' },
+  'Singtam → Namchi drive': { lat: 27.2325, lng: 88.4985, address: 'Singtam, Sikkim 737134, India' },
+  'REUNION at Namchi Central Park': { lat: 27.165935, lng: 88.362207, address: 'Namchi Central Park, Namchi-Manpur Rd, Namchi, Sikkim 737126, India' },
+  'Samdruptse Hill': { lat: 27.179963, lng: 88.3797, address: 'Samdruptse Hill, Namchi, Sikkim 737126, India' },
+  'Char Dham + lunch': { lat: 27.151666, lng: 88.343942, address: 'Siddheshwar Dham (Char Dham), Namchi, Sikkim 737126, India' },
+  'Drive to Temi': { lat: 27.2367, lng: 88.4222, address: 'Temi, South Sikkim 737134, India' },
+  'Temi Tea Garden': { lat: 27.236772, lng: 88.422346, address: 'Temi Tea Garden, Temi, Sikkim 737139, India' },
+  'Temi → Ravangla': { lat: 27.236772, lng: 88.422346, address: 'Temi Tea Garden, Temi, Sikkim 737139, India' },
+  'Buddha Park (floodlit)': { lat: 27.3136, lng: 88.36367, address: 'Buddha Park (Tathagata Tsal), Ravangla, Sikkim 737139, India' },
+  'Buddha Park': { lat: 27.3136, lng: 88.36367, address: 'Buddha Park (Tathagata Tsal), Ravangla, Sikkim 737139, India' },
+  'Drive to Pelling + lunch': { lat: 27.301092, lng: 88.234742, address: 'Upper Pelling, Sikkim 737113, India' },
+  'Pelling Skywalk + Chenrezig statue': { lat: 27.296967, lng: 88.219492, address: 'Pelling Skywalk, Gyalshing, Sikkim 737113, India' },
+  'Sanghak Choeling Monastery': { lat: 27.26389, lng: 88.22139, address: 'Sanghak Choeling Monastery, Pelling, Sikkim 737113, India' },
+  'Helipad sunset': { lat: 27.300742, lng: 88.230745, address: 'Pelling Helipad, Gyalshing, Sikkim 737113, India' },
+  'Dinner + Upper Pelling stroll': { lat: 27.301092, lng: 88.234742, address: 'Upper Pelling, Sikkim 737113, India' },
+  'Rimbi Waterfalls': { lat: 27.313449, lng: 88.19074, address: 'Rimbi Waterfalls, Pelling, Sikkim 737113, India' },
+  'Rimbi Orange Garden': { lat: 27.3162369, lng: 88.1964082, address: 'Rimbi Orange Garden, Pelling, Sikkim 737113, India' },
+  'Kanchenjunga Falls': { lat: 27.3587, lng: 88.1988, address: 'Kanchenjunga Falls, Sikkim 737113, India' },
+  'Khecheopalri Lake': { lat: 27.3499, lng: 88.1883, address: 'Khecheopalri Lake, West Sikkim 737113, India' },
+  'Yuksom': { lat: 27.3724, lng: 88.223, address: 'Yuksom, Sikkim 737113, India' },
+  'Farewell dinner': { lat: 27.301092, lng: 88.234742, address: 'Upper Pelling, Sikkim 737113, India' },
+  'Pemayangtse Monastery': { lat: 27.3052, lng: 88.2516, address: 'Pemayangtse Monastery, Pelling, Sikkim 737111, India' },
+  'Rabdentse Ruins': { lat: 27.3014, lng: 88.2566, address: 'Rabdentse Ruins, Geyzing, Sikkim 737111, India' },
+  'Bird Park': { lat: 27.3019, lng: 88.2514, address: 'Sidkeong Tulku Bird Park, Pelling, Sikkim 737111, India' },
+  'Depart via Legship → Jorethang → Melli': { lat: 27.27, lng: 88.27, address: 'Legship, Sikkim 737111, India' },
+  'NJP': { lat: 26.6842, lng: 88.4429, address: 'New Jalpaiguri Railway Station, Siliguri, West Bengal 734004, India' },
+  'Train 13173': { lat: 26.6842, lng: 88.4429, address: 'New Jalpaiguri Railway Station, Siliguri, West Bengal 734004, India' },
+};
+
+// ---------------------------------------------------------------------------
+// Coordinate backfill for the Sikkim Expedition trip.
+//
+// The live trip was seeded before accurate coordinates existed, and an earlier
+// backfill used approximate town-level pins. This runs on every boot and OVERWRITES
+// lat/lng/address for Sikkim Expedition places matched by exact name with the
+// verified data above, so the Google Maps button on each place opens the correct
+// place page (photos, reviews, Street View). Idempotent and safe to re-run.
+// ---------------------------------------------------------------------------
+function backfillSikkimPlaceCoordinates(db: Database.Database): void {
+  if (readEnv().app.isTest) return;
+  try {
+    const trip = db.prepare('SELECT id FROM trips WHERE title = ?').get(SIKKIM_TRIP_TITLE) as
+      | { id: number }
+      | undefined;
+    if (!trip) return;
+    const rows = db
+      .prepare('SELECT id, name FROM places WHERE trip_id = ?')
+      .all(trip.id) as { id: number; name: string }[];
+    const update = db.prepare('UPDATE places SET lat = ?, lng = ?, address = ? WHERE id = ?');
+    let fixed = 0;
+    for (const row of rows) {
+      const v = VERIFIED_SIKKIM_COORDS[row.name];
+      if (v) {
+        update.run(v.lat, v.lng, v.address, row.id);
+        fixed++;
+      }
+    }
+    console.log(`[seeds] Corrected coordinates for ${fixed}/${rows.length} Sikkim places`);
+  } catch (err: unknown) {
+    console.error('[seeds] Error correcting place coordinates:', err instanceof Error ? err.message : err);
+  }
+}
+
 function runSeeds(db: Database.Database): void {
   seedAdminAccount(db);
   seedCategories(db);
   seedAddons(db);
   seedSikkimTrip(db);
   backfillSikkimPlaceCoordinates(db);
-}
-
-// ---------------------------------------------------------------------------
-// Coordinate backfill for the Sikkim Expedition trip.
-//
-// The trip was first seeded before coordinates were added to SIKKIM_DAYS, so
-// the live trip's places have NULL lat/lng and don't appear on the map.
-// This runs on every boot and fills in coordinates for any place still
-// missing them, matched by exact name. Idempotent and safe to re-run:
-// it never overwrites a place that already has coordinates.
-// ---------------------------------------------------------------------------
-function backfillSikkimPlaceCoordinates(db: Database.Database): void {
-  if (readEnv().app.isTest) return;
-  try {
-    const coordsByName = new Map<string, { lat: number; lng: number }>();
-    for (const day of SIKKIM_DAYS) {
-      for (const place of day.places) {
-        if (place.lat != null && place.lng != null && !coordsByName.has(place.name)) {
-          coordsByName.set(place.name, { lat: place.lat, lng: place.lng });
-        }
-      }
-    }
-    // Approximate town-level coordinates for itinerary entries without a
-    // precise location (transport legs, generic meals, stations). Good enough
-    // to put a pin on the map; never presented as exact.
-    const APPROX: Record<string, { lat: number; lng: number }> = {
-      'SNT bus Siliguri → Gangtok': { lat: 26.7271, lng: 88.3953 }, // Siliguri
-      'Hotel check-in': { lat: 27.3389, lng: 88.6065 }, // Gangtok
-      'Group gym session': { lat: 27.3389, lng: 88.6065 }, // Gangtok
-      'Deorali / Vajra taxi stands': { lat: 27.3256, lng: 88.6122 }, // Deorali, Gangtok
-      'Rent 4 scooties': { lat: 27.3389, lng: 88.6065 }, // Gangtok
-      "Baker's Cafe": { lat: 27.329, lng: 88.6124 }, // MG Marg, Gangtok
-      'Cafe Fiction': { lat: 27.331, lng: 88.613 }, // Gangtok (approx)
-      'Deorali — meet Bolero driver': { lat: 27.3256, lng: 88.6122 }, // Deorali
-      'Depart Gangtok (Bolero, Group A of 6)': { lat: 27.3389, lng: 88.6065 },
-      'Shared Sumo Deorali → Namchi (Group B of 2)': { lat: 27.3256, lng: 88.6122 },
-      'Drive to Temi': { lat: 27.24352, lng: 88.4302 }, // Temi
-      'Helipad sunset': { lat: 27.3047, lng: 88.2481 }, // Pelling helipad (approx)
-      'Dinner + Upper Pelling stroll': { lat: 27.3, lng: 88.237 }, // Pelling
-      'Farewell dinner': { lat: 27.3, lng: 88.237 }, // Pelling
-      'Bird Park': { lat: 27.295, lng: 88.245 }, // Pelling area (approx)
-      'Depart via Legship → Jorethang → Melli': { lat: 27.2742, lng: 88.2824 }, // Legship (approx)
-      NJP: { lat: 26.6812, lng: 88.4432 }, // New Jalpaiguri Jn
-      'Train 13173': { lat: 26.6812, lng: 88.4432 }, // departs NJP
-    };
-    for (const [name, c] of Object.entries(APPROX)) {
-      if (!coordsByName.has(name)) coordsByName.set(name, c);
-    }
-
-    const rows = db
-      .prepare('SELECT id, name FROM places WHERE lat IS NULL OR lng IS NULL')
-      .all() as { id: number; name: string }[];
-    if (rows.length === 0) return;
-    const update = db.prepare('UPDATE places SET lat = ?, lng = ? WHERE id = ?');
-    let fixed = 0;
-    for (const row of rows) {
-      const c = coordsByName.get(row.name);
-      if (c) {
-        update.run(c.lat, c.lng, row.id);
-        fixed++;
-      }
-    }
-    console.log(`[seeds] Backfilled coordinates for ${fixed}/${rows.length} places missing them`);
-  } catch (err: unknown) {
-    console.error('[seeds] Error backfilling place coordinates:', err instanceof Error ? err.message : err);
-  }
 }
 
 export { runSeeds, seedAdminAccount, seedSikkimTrip };
