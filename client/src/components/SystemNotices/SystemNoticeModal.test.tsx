@@ -48,7 +48,7 @@ function MarkdownOverrideProbe({ c }: { c: MarkdownOverrides }) {
   return (
     <span data-testid="md-parts">
       <c.a href="https://roamly.app/changelog">changelog</c.a>
-      <c.p>{'— Maurice'}</c.p>
+      <c.p>{'— R. A.'}</c.p>
       <c.p>{['— Julien', <em key="mark">!</em>]}</c.p>
       <c.p>{'— a closing line that runs past the signature length limit'}</c.p>
       <c.p>{'a plain paragraph'}</c.p>
