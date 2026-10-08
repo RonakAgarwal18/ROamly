@@ -1,6 +1,7 @@
 services:
   app:
-    image: mauriceboe/roamly:latest
+    build: .
+    image: roamly:latest
     container_name: roamly
     read_only: true
     security_opt:
