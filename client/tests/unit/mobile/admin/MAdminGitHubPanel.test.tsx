@@ -27,7 +27,7 @@ function buildRelease(overrides: ReleaseOverrides = {}) {
     published_at: '2025-01-15T12:00:00Z',
     created_at: '2025-01-15T12:00:00Z',
     prerelease: false,
-    author: { login: 'mauriceboe' },
+    author: { login: 'RonakAgarwal18' },
     ...overrides,
   };
 }
@@ -55,22 +55,12 @@ async function renderPanel(props: { isPrerelease?: boolean } = {}) {
 }
 
 describe('MAdminGitHubPanel', () => {
-  it('FE-MOB-AGH-001: renders the six support cards with their external hrefs', async () => {
+  it('FE-MOB-AGH-001: renders the three support cards with their external hrefs', async () => {
     await renderPanel();
 
-    expect(screen.getByText('Ko-fi').closest('a')).toHaveAttribute('href', 'https://ko-fi.com/mauriceboe');
-    expect(screen.getByText('Buy Me a Coffee').closest('a')).toHaveAttribute(
-      'href',
-      'https://buymeacoffee.com/mauriceboe',
-    );
-    const discord = screen.getByText('Discord').closest('a')!;
-    expect(discord).toHaveAttribute('href', 'https://discord.gg/NhZBDSd4qW');
-    expect(discord).toHaveAttribute('target', '_blank');
-    expect(discord).toHaveAttribute('rel', 'noopener noreferrer');
     expect(screen.getByText('Report a Bug')).toBeInTheDocument();
     expect(screen.getByText('Feature Request')).toBeInTheDocument();
-    expect(screen.getByText('Wiki').closest('a')).toHaveAttribute('href', 'https://github.com/mauriceboe/ROamly/wiki');
-    expect(screen.getAllByText('Helps me keep building ROamly')).toHaveLength(2);
+    expect(screen.getByText('Wiki').closest('a')).toHaveAttribute('href', 'https://github.com/RonakAgarwal18/ROamly/wiki');
   });
 
   it('FE-MOB-AGH-002: shows a spinner while the releases request is in flight', () => {
@@ -102,10 +92,10 @@ describe('MAdminGitHubPanel', () => {
     await renderPanel();
 
     expect(screen.getByText('Release History')).toBeInTheDocument();
-    expect(screen.getByText('Latest updates from mauriceboe/ROamly')).toBeInTheDocument();
+    expect(screen.getByText('Latest updates from RonakAgarwal18/ROamly')).toBeInTheDocument();
     expect(screen.getByText('GitHub').closest('a')).toHaveAttribute(
       'href',
-      'https://github.com/mauriceboe/ROamly/releases',
+      'https://github.com/RonakAgarwal18/ROamly/releases',
     );
   });
 
@@ -121,7 +111,7 @@ describe('MAdminGitHubPanel', () => {
     // name === tag_name on the second release, so it is not repeated
     expect(screen.getByText('Big Bang')).toBeInTheDocument();
     expect(screen.getAllByText('v1.9.0')).toHaveLength(1);
-    expect(screen.getAllByText('by mauriceboe')).toHaveLength(2);
+    expect(screen.getAllByText('by RonakAgarwal18')).toHaveLength(2);
   });
 
   it('FE-MOB-AGH-006: falls back to created_at when published_at is null and hides a missing author', async () => {
