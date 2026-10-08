@@ -25,8 +25,14 @@ export function getGoogleMapsUrlForPlace(place: PlaceLike | null | undefined, de
   if (name && address) {
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name}, ${address}`)}`
   }
-  if (place.lat == null || place.lng == null) return null
-  // A name without an address is not safe to search on its own, so the position
-  // wins: a pin in the right spot beats a confident link to the wrong place.
-  return `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`
+  if (place.lat != null && place.lng != null) {
+    // A name without an address is not safe to search on its own, so the position
+    // wins: a pin in the right spot beats a confident link to the wrong place.
+    return `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`
+  }
+  // Last resort: search by name alone. Better than no Google Maps link at all.
+  if (name) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`
+  }
+  return null
 }
