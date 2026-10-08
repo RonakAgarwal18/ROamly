@@ -183,7 +183,7 @@ function NoticeContent({ notice, title, body, ctaLabel, secondaryCtaLabel, title
                     </a>
                   ),
                   p: ({ children }) => {
-                    // Signature line styling (e.g. "— Maurice")
+                    // Signature line styling
                     const text = typeof children === 'string' ? children : Array.isArray(children) ? children.find(c => typeof c === 'string') : '';
                     if (typeof text === 'string' && text.trim().startsWith('—') && text.trim().length < 30) {
                       return <p className="mt-4 mb-3 text-base font-semibold text-slate-800 dark:text-slate-200 italic">{children}</p>;
