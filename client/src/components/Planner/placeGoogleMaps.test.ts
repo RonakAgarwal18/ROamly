@@ -38,9 +38,12 @@ describe('getGoogleMapsUrlForPlace', () => {
     expect(url).toBe('https://www.google.com/maps/search/?api=1&query=48.8584,2.2945')
   })
 
-  it('FE-PLACE-GMAPS-006: returns null for no place or no location', () => {
+  it('FE-PLACE-GMAPS-006: returns null for no place; name alone falls back to search', () => {
     expect(getGoogleMapsUrlForPlace(null)).toBeNull()
-    expect(getGoogleMapsUrlForPlace({ ...base, lat: null, lng: null })).toBeNull()
+    expect(getGoogleMapsUrlForPlace({ ...base, name: '', lat: null, lng: null })).toBeNull()
+    expect(getGoogleMapsUrlForPlace({ ...base, lat: null, lng: null })).toBe(
+      'https://www.google.com/maps/search/?api=1&query=Eiffel%20Tower'
+    )
   })
 
   it('FE-PLACE-GMAPS-007: an address alone carries the link even without coordinates', () => {
