@@ -1234,7 +1234,7 @@ export default function SharedTripPage() {
             </span>
           </div>
           <div className="text-[#d1d5db]" style={{ marginTop: 8, fontSize: 'calc(10px * var(--fs-scale-caption, 1))' }}>
-            Made with <span className="text-[#ef4444]">&hearts;</span> by Maurice ·{' '}
+            Made with <span className="text-[#ef4444]">&hearts;</span> by Ronak Agarwal ·{' '}
             <a href="https://github.com/RonakAgarwal18/ROamly" className="text-[#9ca3af]" style={{ textDecoration: 'none' }}>
               GitHub
             </a>
