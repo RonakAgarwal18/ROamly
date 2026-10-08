@@ -30,7 +30,7 @@ afterEach(() => { vi.restoreAllMocks() })
 describe('getNavigationTargets', () => {
   it('FE-PLANNER-NAV-001: offers every app that can resolve a place with coordinates', () => {
     const targets = getNavigationTargets(place())
-    expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'osm', 'comaps'])
+    expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'comaps'])
     expect(targets[0].label).toBe('Google Maps')
   })
 
@@ -58,7 +58,7 @@ describe('getNavigationTargets', () => {
   it('FE-PLANNER-NAV-004b: an Android phone does not, because nobody there wants it', () => {
     const restore = withUserAgent('Mozilla/5.0 (Linux; Android 15; Pixel 9)')
     try {
-      expect(getNavigationTargets(place()).map(t => t.id)).toEqual(['google', 'waze', 'osm', 'comaps'])
+      expect(getNavigationTargets(place()).map(t => t.id)).toEqual(['google', 'waze', 'comaps'])
     } finally { restore() }
   })
 
@@ -66,7 +66,7 @@ describe('getNavigationTargets', () => {
     const restore = withUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)')
     try {
       const targets = getNavigationTargets(place())
-      expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'osm', 'comaps'])
+      expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'comaps'])
       // q next to ll labels the pin rather than searching blindly.
       expect(targets[2].url).toBe('https://maps.apple.com/?q=Stephansdom&ll=48.2038,16.3616')
     } finally { restore() }
@@ -79,12 +79,12 @@ describe('getNavigationTargets', () => {
     } finally { restore() }
   })
 
-  it('FE-PLANNER-NAV-007: a place without coordinates keeps only what Google can resolve', () => {
+  it('FE-PLANNER-NAV-007: a place without coordinates keeps only Google Maps', () => {
     // Waze and Apple Maps take coordinates and nothing else, so they cannot
     // offer anything here — Google still can, through the place id.
     // OpenStreetMap still manages a name search, the two driving apps do not.
     const targets = getNavigationTargets(place({ lat: null, lng: null, google_place_id: 'ChIJabc' }))
-    expect(targets.map(t => t.id)).toEqual(['google', 'osm'])
+    expect(targets.map(t => t.id)).toEqual(['google'])
   })
 
   it('FE-PLANNER-NAV-007b: CoMaps needs the position, so a place without one loses it', () => {
@@ -101,7 +101,7 @@ describe('getNavigationTargets', () => {
 
   it('FE-PLANNER-NAV-009: a nameless place still reaches every app, just without a label', () => {
     const targets = getNavigationTargets(place({ name: '' }))
-    expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'osm', 'comaps'])
+    expect(targets.map(t => t.id)).toEqual(['google', 'waze', 'apple', 'comaps'])
     expect(targets.find(t => t.id === 'waze')!.url).toBe('https://waze.com/ul?ll=48.2038,16.3616&navigate=yes')
   })
 })
