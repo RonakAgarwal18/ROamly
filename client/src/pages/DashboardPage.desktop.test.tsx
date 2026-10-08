@@ -245,7 +245,7 @@ describe('DashboardPage (desktop)', () => {
   it('FE-PAGE-DESKDASH-012: the boarding pass shows buddies, an overflow badge and places', async () => {
     server.use(http.get('/api/trips/:id/bundle', () => HttpResponse.json({
       members: [
-        { id: 1, username: 'Maurice Boe', avatar_url: '/uploads/avatars/1.jpg' },
+        { id: 1, username: 'Ronak Agarwal', avatar_url: '/uploads/avatars/1.jpg' },
         { id: 2, username: 'Julien' },
         { id: 3, username: 'Ada Lovelace' },
         { id: 4, username: 'Bo' },
@@ -261,7 +261,7 @@ describe('DashboardPage (desktop)', () => {
     const { container } = render(<DashboardPage />);
 
     await waitFor(() => expect(container.querySelector('.buddy-more')).toHaveTextContent('+1'));
-    expect(screen.getByAltText('Maurice Boe')).toBeInTheDocument();
+    expect(screen.getByAltText('Ronak Agarwal')).toBeInTheDocument();
     expect(screen.getByText('JU')).toBeInTheDocument();
     expect(screen.getByText('AL')).toBeInTheDocument();
     expect(container.querySelectorAll('.place-more')[0]).toHaveTextContent('+1');
