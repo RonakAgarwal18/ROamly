@@ -21,6 +21,6 @@ You will receive a response within 48 hours. Once confirmed, a fix will be relea
 
 ## Scope
 
-This policy covers the ROamly application and its Docker image (`mauriceboe/roamly`).
+This policy covers the ROamly application and its Docker image (`ronakagarwal18/roamly`).
 
 Third-party dependencies are monitored via GitHub Dependabot.
