@@ -1,7 +1,7 @@
 {
   "name": "@roamly/root",
   "private": true,
-  "version": "4.3.3",
+  "version": "1.0.0",
   "workspaces": [
     "client",
     "server",
