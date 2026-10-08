@@ -489,7 +489,7 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
         duration: 120,
         note: 'Negotiate 5-day Bolero Maxx (Oct 14–18); target ₹26,000–28,000.',
       },
-      { name: 'MG Marg evening walk + street food', time: '19:00', duration: 120 },
+      { name: 'MG Marg evening walk + street food', lat: 27.3289661, lng: 88.6123515, time: '19:00', duration: 120 },
     ],
   },
   {
@@ -497,10 +497,10 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
     title: 'Scooty Run 1',
     places: [
       { name: 'Rent 4 scooties', time: '09:00', duration: 30 },
-      { name: 'Rumtek Monastery', time: '10:00', duration: 120 },
-      { name: 'Tashi View Point', time: '14:00', duration: 60 },
-      { name: 'Ganesh Tok', time: '16:30', duration: 90, note: 'Kanchenjunga sunset.' },
-      { name: 'MG Marg cafe-hopping + dinner', time: '19:00', duration: 150 },
+      { name: 'Rumtek Monastery', lat: 27.2887582, lng: 88.56142, time: '10:00', duration: 120 },
+      { name: 'Tashi View Point', lat: 27.352, lng: 88.618, time: '14:00', duration: 60 },
+      { name: 'Ganesh Tok', lat: 27.3416128, lng: 88.6213353, time: '16:30', duration: 90, note: 'Kanchenjunga sunset.' },
+      { name: 'MG Marg cafe-hopping + dinner', lat: 27.3289661, lng: 88.6123515, time: '19:00', duration: 150 },
     ],
   },
   {
@@ -508,7 +508,7 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
     title: 'Scooty Run 2 + Permit Handover',
     notes: 'Pack tonight for the 7:30 AM departure.',
     places: [
-      { name: 'Banjhakri Falls & Energy Park', time: '09:30', duration: 150 },
+      { name: 'Banjhakri Falls & Energy Park', lat: 27.3507896, lng: 88.6036489, time: '09:30', duration: 150 },
       { name: "Baker's Cafe", time: '13:00', duration: 60 },
       { name: 'Cafe Fiction', time: '14:30', duration: 60 },
       {
@@ -524,24 +524,24 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
     title: 'The Split',
     places: [
       { name: 'Depart Gangtok (Bolero, Group A of 6)', time: '07:30', duration: 30 },
-      { name: 'Tsomgo Lake', time: '09:30', endTime: '10:30', note: '12,310 ft.' },
-      { name: 'Nathu La Pass', time: '11:00', endTime: '12:30', note: '14,140 ft.' },
-      { name: 'Old Baba Mandir', time: '13:00', endTime: '14:00' },
-      { name: 'Kupup Lake', time: '14:00', endTime: '16:15' },
-      { name: 'Gnathang Valley sunset', time: '16:30', endTime: '17:15', note: '13,500 ft.' },
-      { name: 'Zuluk homestay', time: '18:30', note: 'Bukhari heater, stargazing.' },
+      { name: 'Tsomgo Lake', lat: 27.3745308, lng: 88.7619799, time: '09:30', endTime: '10:30', note: '12,310 ft.' },
+      { name: 'Nathu La Pass', lat: 27.3868289, lng: 88.8308961, time: '11:00', endTime: '12:30', note: '14,140 ft.' },
+      { name: 'Old Baba Mandir', lat: 27.328, lng: 88.818, time: '13:00', endTime: '14:00' },
+      { name: 'Kupup Lake', lat: 27.3301685, lng: 88.8461962, time: '14:00', endTime: '16:15' },
+      { name: 'Gnathang Valley sunset', lat: 27.2989658, lng: 88.8177593, time: '16:30', endTime: '17:15', note: '13,500 ft.' },
+      { name: 'Zuluk homestay', lat: 27.254, lng: 88.782, time: '18:30', note: 'Bukhari heater, stargazing.' },
       { name: 'Shared Sumo Deorali → Namchi (Group B of 2)', time: '11:00', duration: 180 },
-      { name: 'Check in near Namchi Central Park', time: '14:00', duration: 30, ...COORDS.namchi },
-      { name: 'Namchi Central Park, bakeries, coffee', time: '15:00', duration: 180, ...COORDS.namchi },
+      { name: 'Check in near Namchi Central Park', lat: 27.3031019, lng: 88.3785961, time: '14:00', duration: 30, ...COORDS.namchi },
+      { name: 'Namchi Central Park, bakeries, coffee', lat: 27.3031019, lng: 88.3785961, time: '15:00', duration: 180, ...COORDS.namchi },
     ],
   },
   {
     date: '2026-10-15',
     title: 'The Reunion',
     places: [
-      { name: 'Thambi Viewpoint sunrise', time: '05:00', endTime: '06:15' },
-      { name: 'Descend Zuluk → Rongli → Singtam', time: '06:30', endTime: '10:45' },
-      { name: 'Singtam → Namchi drive', time: '10:45', endTime: '12:00', ...COORDS.singtam },
+      { name: 'Thambi Viewpoint sunrise', lat: 27.2657607, lng: 88.7853898, time: '05:00', endTime: '06:15' },
+      { name: 'Descend Zuluk → Rongli → Singtam', lat: 27.20352, lng: 88.70087, time: '06:30', endTime: '10:45' },
+      { name: 'Singtam → Namchi drive', lat: 27.2319975, lng: 88.4970841, time: '10:45', endTime: '12:00', ...COORDS.singtam },
       {
         name: 'REUNION at Namchi Central Park',
         time: '12:00',
@@ -549,22 +549,22 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
         note: 'All 8 in the Bolero.',
         ...COORDS.namchi,
       },
-      { name: 'Samdruptse Hill', time: '12:30', endTime: '13:30', note: '118-ft statue.' },
-      { name: 'Char Dham + lunch', time: '13:45', endTime: '15:30' },
+      { name: 'Samdruptse Hill', lat: 27.1818424, lng: 88.3833145, time: '12:30', endTime: '13:30', note: '118-ft statue.' },
+      { name: 'Char Dham + lunch', lat: 27.174, lng: 88.382, time: '13:45', endTime: '15:30' },
       { name: 'Drive to Temi', time: '15:30', endTime: '16:15' },
-      { name: 'Temi Tea Garden', time: '16:15', endTime: '17:00', ...COORDS.temi },
-      { name: 'Temi → Ravangla', time: '17:00', endTime: '17:45' },
-      { name: 'Buddha Park (floodlit)', time: '19:00', duration: 60, ...COORDS.ravangla },
+      { name: 'Temi Tea Garden', lat: 27.234, lng: 88.418, time: '16:15', endTime: '17:00', ...COORDS.temi },
+      { name: 'Temi → Ravangla', lat: 27.3051271, lng: 88.3644723, time: '17:00', endTime: '17:45' },
+      { name: 'Buddha Park (floodlit)', lat: 27.3116732, lng: 88.3635699, time: '19:00', duration: 60, ...COORDS.ravangla },
     ],
   },
   {
     date: '2026-10-16',
     title: 'Ravangla → Pelling',
     places: [
-      { name: 'Buddha Park', time: '09:00', endTime: '10:30', ...COORDS.ravangla },
-      { name: 'Drive to Pelling + lunch', time: '10:45', endTime: '12:45' },
-      { name: 'Pelling Skywalk + Chenrezig statue', time: '14:30', endTime: '16:00' },
-      { name: 'Sanghak Choeling Monastery', time: '16:00', endTime: '17:00' },
+      { name: 'Buddha Park', lat: 27.3116732, lng: 88.3635699, time: '09:00', endTime: '10:30', ...COORDS.ravangla },
+      { name: 'Drive to Pelling + lunch', lat: 27.3003722, lng: 88.2356503, time: '10:45', endTime: '12:45' },
+      { name: 'Pelling Skywalk + Chenrezig statue', lat: 27.298, lng: 88.238, time: '14:30', endTime: '16:00' },
+      { name: 'Sanghak Choeling Monastery', lat: 27.2969077, lng: 88.2180323, time: '16:00', endTime: '17:00' },
       { name: 'Helipad sunset', time: '17:15', endTime: '18:00' },
       { name: 'Dinner + Upper Pelling stroll', time: '19:30', duration: 120 },
     ],
@@ -573,11 +573,11 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
     date: '2026-10-17',
     title: 'Northern Circuit',
     places: [
-      { name: 'Rimbi Waterfalls', time: '09:15', endTime: '09:45' },
-      { name: 'Rimbi Orange Garden', time: '09:45', endTime: '10:30' },
-      { name: 'Kanchenjunga Falls', time: '11:00', endTime: '12:15' },
-      { name: 'Khecheopalri Lake', time: '12:45', endTime: '14:00' },
-      { name: 'Yuksom', time: '14:30', endTime: '16:00' },
+      { name: 'Rimbi Waterfalls', lat: 27.3132467, lng: 88.1905497, time: '09:15', endTime: '09:45' },
+      { name: 'Rimbi Orange Garden', lat: 27.31476, lng: 88.18589, time: '09:45', endTime: '10:30' },
+      { name: 'Kanchenjunga Falls', lat: 27.318, lng: 88.195, time: '11:00', endTime: '12:15' },
+      { name: 'Khecheopalri Lake', lat: 27.3499171, lng: 88.1883298, time: '12:45', endTime: '14:00' },
+      { name: 'Yuksom', lat: 27.3692431, lng: 88.2184825, time: '14:30', endTime: '16:00' },
       { name: 'Farewell dinner', time: '19:30', duration: 150, note: 'Back in Pelling.' },
     ],
   },
@@ -585,8 +585,8 @@ const SIKKIM_DAYS: SikkimSeedDay[] = [
     date: '2026-10-18',
     title: 'Heritage + NJP Drop',
     places: [
-      { name: 'Pemayangtse Monastery', time: '08:00', endTime: '09:00' },
-      { name: 'Rabdentse Ruins', time: '09:15', endTime: '10:30' },
+      { name: 'Pemayangtse Monastery', lat: 27.302, lng: 88.252, time: '08:00', endTime: '09:00' },
+      { name: 'Rabdentse Ruins', lat: 27.3020013, lng: 88.2563387, time: '09:15', endTime: '10:30' },
       { name: 'Bird Park', time: '10:30', endTime: '11:00' },
       { name: 'Depart via Legship → Jorethang → Melli', time: '11:00', duration: 315 },
       { name: 'NJP', time: '16:15', endTime: '16:30' },
@@ -677,6 +677,73 @@ function runSeeds(db: Database.Database): void {
   seedCategories(db);
   seedAddons(db);
   seedSikkimTrip(db);
+  backfillSikkimPlaceCoordinates(db);
+}
+
+// ---------------------------------------------------------------------------
+// Coordinate backfill for the Sikkim Expedition trip.
+//
+// The trip was first seeded before coordinates were added to SIKKIM_DAYS, so
+// the live trip's places have NULL lat/lng and don't appear on the map.
+// This runs on every boot and fills in coordinates for any place still
+// missing them, matched by exact name. Idempotent and safe to re-run:
+// it never overwrites a place that already has coordinates.
+// ---------------------------------------------------------------------------
+function backfillSikkimPlaceCoordinates(db: Database.Database): void {
+  if (readEnv().app.isTest) return;
+  try {
+    const coordsByName = new Map<string, { lat: number; lng: number }>();
+    for (const day of SIKKIM_DAYS) {
+      for (const place of day.places) {
+        if (place.lat != null && place.lng != null && !coordsByName.has(place.name)) {
+          coordsByName.set(place.name, { lat: place.lat, lng: place.lng });
+        }
+      }
+    }
+    // Approximate town-level coordinates for itinerary entries without a
+    // precise location (transport legs, generic meals, stations). Good enough
+    // to put a pin on the map; never presented as exact.
+    const APPROX: Record<string, { lat: number; lng: number }> = {
+      'SNT bus Siliguri → Gangtok': { lat: 26.7271, lng: 88.3953 }, // Siliguri
+      'Hotel check-in': { lat: 27.3389, lng: 88.6065 }, // Gangtok
+      'Group gym session': { lat: 27.3389, lng: 88.6065 }, // Gangtok
+      'Deorali / Vajra taxi stands': { lat: 27.3256, lng: 88.6122 }, // Deorali, Gangtok
+      'Rent 4 scooties': { lat: 27.3389, lng: 88.6065 }, // Gangtok
+      "Baker's Cafe": { lat: 27.329, lng: 88.6124 }, // MG Marg, Gangtok
+      'Cafe Fiction': { lat: 27.331, lng: 88.613 }, // Gangtok (approx)
+      'Deorali — meet Bolero driver': { lat: 27.3256, lng: 88.6122 }, // Deorali
+      'Depart Gangtok (Bolero, Group A of 6)': { lat: 27.3389, lng: 88.6065 },
+      'Shared Sumo Deorali → Namchi (Group B of 2)': { lat: 27.3256, lng: 88.6122 },
+      'Drive to Temi': { lat: 27.24352, lng: 88.4302 }, // Temi
+      'Helipad sunset': { lat: 27.3047, lng: 88.2481 }, // Pelling helipad (approx)
+      'Dinner + Upper Pelling stroll': { lat: 27.3, lng: 88.237 }, // Pelling
+      'Farewell dinner': { lat: 27.3, lng: 88.237 }, // Pelling
+      'Bird Park': { lat: 27.295, lng: 88.245 }, // Pelling area (approx)
+      'Depart via Legship → Jorethang → Melli': { lat: 27.2742, lng: 88.2824 }, // Legship (approx)
+      NJP: { lat: 26.6812, lng: 88.4432 }, // New Jalpaiguri Jn
+      'Train 13173': { lat: 26.6812, lng: 88.4432 }, // departs NJP
+    };
+    for (const [name, c] of Object.entries(APPROX)) {
+      if (!coordsByName.has(name)) coordsByName.set(name, c);
+    }
+
+    const rows = db
+      .prepare('SELECT id, name FROM places WHERE lat IS NULL OR lng IS NULL')
+      .all() as { id: number; name: string }[];
+    if (rows.length === 0) return;
+    const update = db.prepare('UPDATE places SET lat = ?, lng = ? WHERE id = ?');
+    let fixed = 0;
+    for (const row of rows) {
+      const c = coordsByName.get(row.name);
+      if (c) {
+        update.run(c.lat, c.lng, row.id);
+        fixed++;
+      }
+    }
+    console.log(`[seeds] Backfilled coordinates for ${fixed}/${rows.length} places missing them`);
+  } catch (err: unknown) {
+    console.error('[seeds] Error backfilling place coordinates:', err instanceof Error ? err.message : err);
+  }
 }
 
 export { runSeeds, seedAdminAccount, seedSikkimTrip };
