@@ -15,8 +15,8 @@ function releaseNotice(overrides: Partial<SystemNoticeDTO> = {}): SystemNoticeDT
     bodyKey: 'rel.intro',
     dismissible: true,
     desktopOnly: true,
-    cta: { kind: 'link', labelKey: 'rel.bmc', href: 'https://buymeacoffee.com/mauriceboe' },
-    secondaryCta: { kind: 'link', labelKey: 'rel.kofi', href: 'https://ko-fi.com/mauriceboe' },
+    cta: { kind: 'link', labelKey: 'rel.bmc', href: 'https://buymeacoffee.com/roamly' },
+    secondaryCta: { kind: 'link', labelKey: 'rel.kofi', href: 'https://ko-fi.com/roamly' },
     release: {
       version: '4.3.0',
       eyebrowKey: 'rel.eyebrow',
