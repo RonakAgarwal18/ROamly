@@ -259,7 +259,7 @@ describe('MAdminSheets', () => {
 
     expect(screen.getByRole('dialog', { name: 'How to Update' })).toBeInTheDocument();
     expect(screen.getByText('v3.4.0 → v3.5.0')).toBeInTheDocument();
-    expect(screen.getByText(/docker pull mauriceboe\/roamly:latest/)).toBeInTheDocument();
+    expect(screen.getByText(/docker pull ronakagarwal18\/roamly:latest/)).toBeInTheDocument();
     expect(
       screen.getByText(
         'Your ROamly instance runs in Docker. To update to v3.5.0, run the following commands on your server:',
