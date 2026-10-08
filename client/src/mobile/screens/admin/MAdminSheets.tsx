@@ -12,14 +12,14 @@ interface MAdminSheetsProps {
   t: TranslationFn
 }
 
-const DOCKER_UPDATE_COMMANDS = `docker pull mauriceboe/roamly:latest
+const DOCKER_UPDATE_COMMANDS = `docker pull ronakagarwal18/roamly:latest
 docker stop roamly && docker rm roamly
 docker run -d --name roamly \\
   -p 3000:3000 \\
   -v /opt/roamly/data:/app/data \\
   -v /opt/roamly/uploads:/app/uploads \\
   --restart unless-stopped \\
-  mauriceboe/roamly:latest`
+  ronakagarwal18/roamly:latest`
 
 // The admin screen's sheet layer: create user, edit user (incl. passkey reset
 // and delete), the "how to update" instructions and the rotate-JWT confirm.
