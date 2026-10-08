@@ -225,7 +225,7 @@ describe('AdminUserModals', () => {
 
     expect(screen.getByText('How to Update')).toBeInTheDocument();
     expect(screen.getByText('v3.4.1 → v3.5.0')).toBeInTheDocument();
-    expect(screen.getByText(/docker pull mauriceboe\/roamly:latest/)).toBeInTheDocument();
+    expect(screen.getByText(/docker pull ronakagarwal18\/roamly:latest/)).toBeInTheDocument();
   });
 
   it('FE-ADMMOD-016: a non-docker install links to the wiki instead', () => {
