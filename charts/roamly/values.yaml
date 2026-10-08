@@ -1,6 +1,6 @@
 
 image:
-  repository: mauriceboe/roamly
+  repository: ronakagarwal18/roamly
   # tag: latest
   pullPolicy: IfNotPresent
 
