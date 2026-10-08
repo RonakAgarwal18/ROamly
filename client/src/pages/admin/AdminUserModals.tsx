@@ -338,14 +338,14 @@ export default function AdminUserModals({ admin, t }: AdminUserModalsProps): Rea
                   }}
                   className="border border-gray-700 bg-gray-900 text-gray-100 dark:bg-gray-950"
                 >
-                  {`docker pull mauriceboe/roamly:latest
+                  {`docker pull ronakagarwal18/roamly:latest
 docker stop roamly && docker rm roamly
 docker run -d --name roamly \\
   -p 3000:3000 \\
   -v /opt/roamly/data:/app/data \\
   -v /opt/roamly/uploads:/app/uploads \\
   --restart unless-stopped \\
-  mauriceboe/roamly:latest`}
+  ronakagarwal18/roamly:latest`}
                 </div>
               )}
 
