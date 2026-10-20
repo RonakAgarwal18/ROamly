@@ -1,28 +1,42 @@
-# Captain ROamly
+<div align="center">
 
-**ROamly — your trip. your plan.**
+<img src="docs/roamly-icon.png" width="88" alt="ROamly icon" />
 
-A self-hosted travel planner that keeps a whole trip in one place: day-wise plans on a map, bookings, budgets, packing lists and a journal — plus an AI chat that builds and edits the trip for you. Your trips live on your own server, under your own account.
+# ROamly
 
-**Live demo:** https://roamly.up.railway.app
+**Your trip. Your plan.**
 
-![License](https://img.shields.io/badge/license-AGPL_v3-6B7280?style=flat-square)
+*A self-hosted travel planner — maps, day plans, budgets, packing lists, and an AI chat that builds the trip with you.*
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black)
+![NestJS](https://img.shields.io/badge/NestJS_11-E0234E?style=flat-square&logo=nestjs&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-AGPL_v3-6B7280?style=flat-square)
+
+### [▶ Live Demo](https://roamly.up.railway.app)
+
+</div>
 
 ---
+
+## What it is
+
+ROamly keeps a whole trip in one place and on your own server: day-wise plans on a map, bookings, budgets, packing lists and a journal — plus an AI chat that builds and edits the trip for you. No account on someone else's platform, no ads, your data in two folders on your disk.
+
+A fresh install opens with a ready-made 8-day Sikkim trip, so you can see a full plan from the first minute.
 
 ## What you get
 
 - **Day plans** — plan each day place by place, drag stops between days, reorder inside a day, undo when you change your mind
 - **Maps** — every place pinned on an interactive map, with clustering, photo markers and route lines; sensible day routes worked out for you
-- **AI trip chat** — paste a full itinerary as plain text and Captain ROamly builds the trip day by day; then chat to edit it ("move this to the evening", "add a day in Pelling") or ask if a plan is doable
+- **AI trip chat** — paste a full itinerary as plain text and ROamly builds the trip day by day; then chat to edit it ("move this to the evening", "add a day in Pelling") or ask if a plan is doable
 - **Bookings & money** — keep bookings with the right day, and track trip costs and budgets as you plan
 - **Lists** — packing lists and checklists per trip, so nothing gets left behind
 - **Journal** — write the trip down as it happens, with the places attached
 - **Collaboration** — share a trip and plan together in real time; changes sync live
 - **Works as an app** — install it on your phone's home screen (PWA), no app store needed
-- **Yours** — multi-user accounts with roles, your data in two folders on your disk, nothing sent anywhere you did not choose
-
-A fresh install opens with a ready-made 8-day Sikkim trip, so you can see a full plan from the first minute.
+- **Yours** — multi-user accounts with roles, and your data stays on your server
 
 ## Quick start (Docker)
 
@@ -91,4 +105,8 @@ AGPL-3.0 — see [LICENSE](LICENSE).
 
 ---
 
+<div align="center">
+
 Built by [Ronak Agarwal](https://github.com/RonakAgarwal18)
+
+</div>
